@@ -1,0 +1,8 @@
+.menu__icon{
+  padding-top:40px;
+  display:flex;
+  justify-content: center;
+}
+.menu__icon a,.menu__icon button{
+  display: block;
+}
