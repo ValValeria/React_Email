@@ -65,7 +65,7 @@ export default function Schedule(){
   const Sch= (
       <div className="schedule__area" key={Math.random()}>
         <Card>
-          <form   autoComplete="off" id="send_email">
+          <form   autoComplete="off" id="send_email" noValidate={false}>
               <div className="headline">
                   Schedule an event
               </div>

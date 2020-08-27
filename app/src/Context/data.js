@@ -29,16 +29,17 @@ class Data{
          if(response.ok){
              const json = await response.json()
              
-             if(json.status==200){
+             if(response.status==200){
                 this.data.messages.push('Your message is sent')
              } else {
-                this.data.errors.push(...json.errors)   
+                this.data.errors.push(...(json.errors||[]))   
              }            
 
          } else {
              this.data.errors.push("Http Error "+ response.status)
          }
         } catch (e) {
+            console.log(e)
             this.data.errors.push("Http Error. Please try again")
         } finally {
             this.subject.next(this.data)
