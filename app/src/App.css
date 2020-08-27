@@ -23,6 +23,11 @@
   max-width: 456.25px;
   min-width: 330px;
 }
+.section__items{
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:center ;
+}
 .auth__form > div {
   margin-bottom: 16px;
 }

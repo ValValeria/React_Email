@@ -11,9 +11,7 @@ function App() {
        const data = JSON.parse(localStorage.getItem('auth'))
 
        if ( "email" in data && "password" in data){
-          (async()=>{
             mainStorage.auth('/login')
-          })()
        }
      } catch (e) {}
   })

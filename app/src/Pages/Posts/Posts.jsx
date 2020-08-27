@@ -48,15 +48,16 @@ export default class extends React.PureComponent{
                 <div className="section__content-wrap ">
                 <div className="section__content-main flex_center flex_cl txt_center">
                     <h5>Your schedule <span>🚀</span></h5>
+                    <br/>
                      <div className="section__items">
                        { 
                            !this.state.posts.length &&
                            range(0,3,1).map(v=>{
                                return (
                               <div className={this.state.classes.root} key={v}>
-                                <Skeleton />
-                                <Skeleton animation={false} />
-                                <Skeleton animation="wave" />
+                                <Skeleton className={this.state.classes.root}  />
+                                <Skeleton animation={false} className={this.state.classes.root} />
+                                <Skeleton animation="wave" className={this.state.classes.root}  />
                               </div>
                                )
                            })
