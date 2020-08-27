@@ -19,6 +19,9 @@ export default function Schedule(){
 
   const [selectedDate, setSelectedDate] = React.useState(new Date());
 
+  const email= React.createRef();
+  const message=React.createRef();
+    
   const handleDateChange = (time,date) => {
 
     setSelectedDate(()=>{
@@ -37,10 +40,7 @@ export default function Schedule(){
   mainStore.subject.subscribe((v)=>{
     updateData(v)
   })
-
-  const email= React.createRef();
-  const message=React.createRef();
-
+    
   const handleSubmit=(e)=>{
     e.preventDefault();
     mainStore.sendEmail({date:selectedDate,email:email.current.querySelector('input').value,message:message.current.querySelector('textarea').value})
@@ -71,7 +71,7 @@ export default function Schedule(){
               </div>
 
               <div className="email">
-                 <TextField id="standard-basic" ref={email} label="Email"/>
+                 <TextField id="standard-basic" ref={email} label="Email" value = {mainStore.user.email} />
               </div>
 
               <div className="message">

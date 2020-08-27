@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -13,6 +13,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { useCallback } from 'react';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom'
+import { interval } from 'rxjs';
+import {take} from 'rxjs/operators';
+import mainStore from '../Context/data'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,9 +35,35 @@ const useStyles = makeStyles((theme) => ({
 
 export default function (){
     const classes = useStyles();
+
+
     const lists=useCallback(()=>{
-      return [{"Main":"/"},{'Send mail':"sendmail"}]
-    },[1])
+      const data = [{"Main":"http://localhost:3000"}]
+      
+      if (!mainStore.user.isLogged) {
+          data.push({"Login":"/login"},{"Sign up":"/signup"})
+      } 
+
+      data.push({'Send mail':"/sendmail"},{"Your schedule":"/posts"});
+  
+      return data;
+    })
+
+    const [mylist,update] = useState(lists())
+
+    useEffect(()=>{
+      interval(1000)
+      .pipe(
+         take(3)
+      ).subscribe((v)=>{
+         const data = lists();
+
+         if(data !==  mylist){
+           update(data)
+         }
+      })
+    })
+
     const [state,updateState]=useState(false);
 
     return (
@@ -59,7 +88,7 @@ export default function (){
           </div>
           <List>
           {
-              lists().map((elem)=>{
+              mylist.map((elem)=>{
                   return (
                   <>   
                   <ListItem button key={Math.random()} className={classes.list}>

@@ -29,7 +29,6 @@ class Handler{
            const body = req.body;
            const user = await User.exists({email:body.email})
            const response = {status:"guest",messages:[]} 
-           console.log(req.body)   
            if (!user) {
                const user = await User.create({email:body.email,password:body.password});
                response.status="user"
@@ -42,7 +41,7 @@ class Handler{
         }
 
         async login({body},resp){
-           const user = await User.findOne({email:body.email,password:body.password}).exec()
+           const user = await User.exists({email:body.email,password:body.password})
            const response = {status:"guest"} 
            if (user) {
               response.status="user"

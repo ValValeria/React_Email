@@ -6,3 +6,26 @@
 .menu__icon a,.menu__icon button{
   display: block;
 }
+.ban_2{
+  background-image: url("https://atomizedesign.com/images/figma/figma.png");
+}
+.auth__form{
+  box-shadow: 0px 8.2px 13.6667px rgba(16, 20, 38, 0.14);
+  padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+    min-height: 300px;
+}
+.auth__form input, .auth__form textarea {
+  width: auto;
+  max-width: 456.25px;
+  min-width: 330px;
+}
+.auth__form > div {
+  margin-bottom: 16px;
+}
+.h_100{
+  height:92vh;
+}

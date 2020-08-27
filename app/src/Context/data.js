@@ -1,6 +1,11 @@
 import {Subject} from 'rxjs';
+import { User } from './classes/user';
+import {ajax} from 'rxjs/ajax';
+import {of} from 'rxjs'
+import {retry,catchError} from 'rxjs/operators';
 
 class Data{
+
      constructor(){
         this.data={
             errors:[],
@@ -9,10 +14,39 @@ class Data{
 
         this.subject = new Subject();
 
-        Object.defineProperty(this,'data',{
+        Object.defineProperties(this,{
+            'data':{
             configurable:false,
             writable:false
+            }
         })
+        
+        this.user = new User();
+     }
+
+     async auth(path,inputFields){
+       try {
+           const response = await fetch('http://localhost:8000'+path,{
+            method:"POST",
+            body:JSON.stringify(inputFields),
+            headers:{
+                "Content-Type":"application/json"
+            }
+           })
+
+           const data = await response.json();
+
+           if ( data.status == "user") {
+                   this.data.messages.push( "You are logged")
+                   this.user.setUser({...inputFields,id:data.id||inputFields.id})
+           } else {
+                   this.data.errors = data.errors || data.messages|| []
+           }
+     
+       } catch (error) { 
+       } finally {
+             return this.data
+       }
      }
 
      async sendEmail(inputFields){
@@ -45,6 +79,10 @@ class Data{
             this.subject.next(this.data)
         }
      }
+
+     request (url) {
+         return ajax(url).pipe(retry(3),catchError(e=>of(e)))
+     }
 }
 
-export default Object.seal(new Data());
+export default new Data();
