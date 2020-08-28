@@ -1,8 +1,8 @@
 const child_proccess = require('child_process')
-const User = require('./mongoose/scheme').User;
-const Schedule = require('./mongoose/scheme').Schedule;
 const path_m = require('path')
 const  fs = require('fs')
+const User = require(path_m.join(__dirname,'mongoose/scheme')).User;
+const Schedule = require(path_m.join(__dirname,'mongoose/scheme')).Schedule;
 
 class Handler{
         

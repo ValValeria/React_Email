@@ -4,10 +4,22 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/runtime": "^7.11.2",
     "axios": "^0.20.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2",
     "lodash": "^4.17.20",
     "mongoose": "^5.10.1",
     "nodemailer": "^6.4.11",
@@ -15,10 +27,15 @@
     "rxjs": "^6.6.2",
     "validator": "^13.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-es2016": "^7.0.0-beta.53",
+    "babel-polyfill": "^6.26.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server\\server.js"
+    "start": "gulp & node output\\server.js",
+    "gulp": "gulp  "
   },
   "author": "",
   "license": "ISC"

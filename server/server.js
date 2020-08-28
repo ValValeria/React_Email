@@ -3,7 +3,6 @@ const app = express ();
 const handler = require('./handler').handler;
 const authenticate = require('./handler').authenticate;
 const bodyparser = require('body-parser')
-const path = require('path')
 
 app.use(bodyparser.json())
 
