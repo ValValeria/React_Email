@@ -3,6 +3,7 @@ const app = express ();
 const handler = require('./handler').handler;
 const authenticate = require('./handler').authenticate;
 const bodyparser = require('body-parser')
+const path = require('path')
 
 app.use(bodyparser.json())
 
@@ -26,8 +27,16 @@ app.post('/login',(...args)=>{
     handler.login(...args)
 });
 
+app.get('/static/:folder/:file',(...args)=>{
+   handler.sendFile(...args)
+})
+
 app.get('/userSchedule',(...args)=>{
     handler.getSchedule(...args)
 });
+
+app.get("*",(...args)=>{
+    handler.files(...args)
+})
 
 app.listen(8000);

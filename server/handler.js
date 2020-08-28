@@ -1,10 +1,26 @@
 const child_proccess = require('child_process')
 const User = require('./mongoose/scheme').User;
 const Schedule = require('./mongoose/scheme').Schedule;
-
+const path_m = require('path')
+const  fs = require('fs')
 
 class Handler{
         
+        async files(req,resp){
+           const path = path_m.join(path_m.dirname(__dirname),'app','build','index.html')
+           return resp.sendFile(path)
+        }
+        
+        async sendFile(req,resp){
+           const path = path_m.join(path_m.dirname(__dirname),'app','build',"static",req.params.folder,req.params.file)  
+
+           if(fs.existsSync(path)){
+              resp.sendFile(path)  
+           } else {
+              resp.send('File not found')
+           }
+        }
+
         async  sendEmail(req,resp){
           
           if(req.user && req.user.email==req.body.email){
