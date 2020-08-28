@@ -40,10 +40,12 @@ export default function (){
     const lists=useCallback(()=>{
       const data = [{"Main":"http://localhost:3000"}]
       
-      if (!mainStore.user.isLogged) {
+      setTimeout(()=>{
+        if (!mainStore.user.isLogged) {
           data.push({"Login":"/login"},{"Sign up":"/signup"})
-      } 
-
+        } 
+      },2000)
+  
       data.push({'Send mail':"/sendmail"},{"Your schedule":"/posts"});
   
       return data;
@@ -91,12 +93,12 @@ export default function (){
               mylist.map((elem)=>{
                   return (
                   <>   
+                <Link to={ Object.values(elem)[0]} className="links">
                   <ListItem button key={Math.random()} className={classes.list}>
-                       <Link to={ Object.values(elem)[0]}>
                           <ListItemText primary={Object.keys(elem)[0]} />
-                       </Link>
                   </ListItem>
-                  <Divider/>
+                </Link>
+                <Divider/>
                   </>
                   )
               })

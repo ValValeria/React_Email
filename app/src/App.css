@@ -18,6 +18,9 @@
     background-color: white;
     min-height: 300px;
 }
+.links{
+  display:block;
+}
 .auth__form input, .auth__form textarea {
   width: auto;
   max-width: 456.25px;
@@ -27,6 +30,13 @@
   display: flex;
   flex-wrap:wrap;
   justify-content:center ;
+  align-items:center;
+  width:100%;
+}
+.section__items > div{
+  flex:1 1 33.33333%;
+  max-width:300px;
+  margin:10px;
 }
 .auth__form > div {
   margin-bottom: 16px;

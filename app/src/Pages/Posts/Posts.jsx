@@ -58,6 +58,8 @@ export default class extends React.PureComponent{
                                 <Skeleton className={this.state.classes.root}  />
                                 <Skeleton animation={false} className={this.state.classes.root} />
                                 <Skeleton animation="wave" className={this.state.classes.root}  />
+                                <Skeleton animation="wave" className={this.state.classes.root}  />
+                                <Skeleton animation="wave" className={this.state.classes.root}  />
                               </div>
                                )
                            })

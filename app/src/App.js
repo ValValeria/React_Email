@@ -21,7 +21,7 @@ function App() {
        <Switch>
             {
               [routes.map(elem=>{
-                return <Route {...elem} key={elem} />
+                return <Route {...elem} key={elem+Math.random()} />
               })]
             }
        </Switch>

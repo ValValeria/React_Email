@@ -5,16 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from 'react-router-dom'
 import Header from './Components/Header'
-import {context as Context} from './Context/context'
-import data  from './Context/data';
-
 
 ReactDOM.render(
     <BrowserRouter>
-       <Context.Provider value={ data}>
           <Header/>
           <App />
-       </Context.Provider>
     </BrowserRouter>,
   document.getElementById('root')
 );

@@ -26,7 +26,7 @@ class Data{
 
      async auth(path,inputFields){
        try {
-           const response = await fetch('http://localhost:8000'+path,{
+           const response = await fetch(path,{
             method:"POST",
             body:JSON.stringify(inputFields),
             headers:{
@@ -52,7 +52,7 @@ class Data{
      async sendEmail(inputFields){
 
          try{
-         let response = await fetch('http://localhost:8000/sendemail',{
+         let response = await fetch('/sendemail',{
              method:"POST",
              body:JSON.stringify(inputFields),
              headers:{
