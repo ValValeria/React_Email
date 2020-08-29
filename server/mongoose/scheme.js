@@ -16,7 +16,7 @@ const User = mongoose.model('User_r',UserScheme);
 
 const Schedule = mongoose.model('Schedule_r',ScheduleScheme)
 
-mongoose.connect("mongodb+srv://myuser:jsjjsjsjjsj7272jH@cluster0.emx8s.mongodb.net/schedule?retryWrites=true&w=majority",{ useNewUrlParser: true })
+mongoose.connect("************************************",{ useNewUrlParser: true })
 
 module.exports.User = User
 
