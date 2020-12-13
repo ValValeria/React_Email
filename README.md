@@ -6,7 +6,9 @@ You can send emails, which is going to be delivered in the specified time by Nod
 
 In the project directory, you need:
 * npm install<br/>
+
 Then fill the file, named `server\mongoose\scheme.js` with mongoose database config. After it, type in the terminal:
+
 * npm start
 
 Runs the app in the development mode.<br />
